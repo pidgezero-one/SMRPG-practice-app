@@ -1,0 +1,130 @@
+<ion-view title="Menu Simulator" ng-init="reset()" cache-view="false" >
+  <ion-content class="has-header menu-simulator">
+  
+  <div ng-show="!menuSelected">
+  	<div style="padding: 15px; text-align: center;">
+  
+  		<div>The best way to practice menus is on an emulator.</div>
+  		<div>But this'll probably help if you aren't near a computer.</div>
+  		<div style="padding: 15px; text-align: center;">
+  
+  			<div><input type="radio" ng-model="language" value="Japanese" name="language" id="menu-japanese"><label for="menu-japanese">Japanese</label></div><br>
+  			<div><input type="radio" ng-model="language" value="English" name="language" id="menu-english"><label for="menu-english">English</label></div>
+  
+  		</div><br>
+  
+  		<div>Choose a menu:</div>
+  
+  
+  		<div class="menu-sim-select" ng-repeat="option in menus" ng-click="chooseMenu(option.id)">
+			  <span ng-bind="option.name"></span>
+  		</div>
+  
+  	</div>
+  </div>
+  
+  <div ng-show="menuSelected">
+  	
+  	<div id="menu-splash" ng-show="splash">
+  		<div class="selected-menu-title" ng-bind="echoName()"></div>
+  		<img ng-src="img/menusim_splash/{{ activeState.id }}.png"/>
+  	</div>
+  
+  	<div class="all-menus" ng-show="!splash" ng-style="{ 'height' : '{{getMenuPort('height')}}px', 'width' : '{{getMenuPort('width')}}px' }">
+  
+		  <div id='shopMenuBase' class='shop-menu base'>
+		  	<div class="left-column">
+		  		<ul class="menu-container shop-options">
+		  			<li ng-repeat="option in allActiveMenus[0].leftMenu">{{ option }}</li>
+		  		</ul>
+		  		<div class="menu-container shop-coins">
+		  			<div class="left" ng-bind="allActiveMenus[0].coinsLabel"></div>
+		  			<div class="right" ng-bind="coins"></div>
+		  			<div style="clear: both;"></div>
+		  		</div>
+		  		<div class="shop-exit-with-b" ng-bind="allActiveMenus[0].exitWithB"></div>
+		  	</div>
+		  	<div class="right-column">
+		  		<ul class="menu-container shop-buy">
+		  			<li ng-repeat="option in shopMenu" ng-show="language=='English'"> {{ option.name.U }}</li>
+		  			<li ng-repeat="option in shopMenu" ng-show="language=='Japanese'"> {{ option.name.J }}</li>
+		  		</ul>
+		  	</div>
+		  </div>
+		  
+		  <div id='shopMenuBuy' class='shop-menu buy'>
+		  	<div class="menu-container shop-item-info"></div>
+		  	<div class="menu-container shop-item-equippable"></div>
+		  	<div class="menu-container shop-buy"></div>
+		  	<div class="shop-exit-with-b"></div>
+		  </div>
+		  
+		  <div id='shopMenuSellItems' class='shop-menu sell items'>
+		  	<div class="menu-container shop-item-info"></div>
+		  	<div class="menu-container shop-sellable-items"></div>
+		  	<div class="shop-exit-with-b"></div>
+		  </div>
+		  
+		  <div id='shopMenuSellEquips' class='shop-menu sell equips'>
+		  	<div class="menu-container shop-item-info"></div>
+		  	<div class="menu-container shop-item-equippable"></div>
+		  	<div class="menu-container shop-sellable-items"></div>
+		  	<div class="shop-exit-with-b"></div>
+		  </div>
+		  
+		  <div id='shopMenuEquip' class='shop-menu equip'>
+		  	<div class="party-container">
+		  		<div class="menu-container" ng-repeat="member in party" ng-class="member.id"></div>
+		  	</div>
+		  	<div class="menu-container">
+		  		<div class="shop-item-equippable"></div>
+		  		<div class="shop-item-stats"></div>
+		  	</div>
+		  	<div class="menu-container shop-equips"></div>
+		  </div>
+		
+		  <div id='xMenuBase' class='x-menu base'>
+		  	<div class="party-container">
+			  	<div ng-repeat="member in party" class="menu-container 0"></div>
+			  	<div ng-repeat="member in party" class="menu-container 1"></div>
+			  	<div ng-repeat="member in party" class="menu-container 2"></div>
+		  	</div>
+		  	<div class="menu-container x-options"></div>
+		  	<div class="menu-container x-coins-flowers"></div>
+		  </div>
+		  
+		  <div id='xMenuItems' class='x-menu items'>
+		  	<div class="party-container">
+			  	<div ng-repeat="member in party" class="menu-container 0"></div>
+			  	<div ng-repeat="member in party" class="menu-container 1"></div>
+			  	<div ng-repeat="member in party" class="menu-container 2"></div>
+		  	</div>
+		  	<div class="x-flowers"></div>
+		  	<div class="menu-container x-item-stats"></div>
+		  	<div class="menu-container x-items"></div>
+		  </div>
+		  
+		  <div id='xMenuEquip' class='x-menu equip'>
+		  	<div class="party-container">
+		  		<div class="menu-container" ng-repeat="member in party" ng-class="member.id"></div>
+		  	</div>
+		  	<div class="menu-container">
+		  		<div class="x-item-equippable"></div>
+		  		<div class="x-item-stats"></div>
+		  	</div>
+		  	<div class="menu-container x-equips"></div>
+		  </div>
+		  
+		  <div id='xMenuSwitch' class='x-menu switch'>
+		  		<div class="menu-container" ng-repeat="member in party" ng-class="member.id"></div>
+		  		<div class="stats"></div>
+		  		<div class="switch-message"></div>
+		  </div>
+  
+  	</div>
+  
+  	<div id='HUD' class='hud'></div>
+  
+  </div>
+  </ion-content>
+</ion-view>

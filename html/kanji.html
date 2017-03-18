@@ -1,0 +1,15 @@
+<ion-view title="Kanji">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+  <div class="display-table"><div class="display-row"><div class="display-cell" style="width: 25%;"><label>Search:</label></div><div class="display-cell" style="width: 75%;"><input type="text" class="search" ng-model="form.searchTerm" ng-change="filterKanji()"/></div></div></div>
+  <div>
+    <ion-list>
+      <ion-item ng-repeat="kanji in kanjiList" class="smrpg-list-item" href="#/app/tasks/{{playlist.id}}">
+        <div style="display: inline-block; width: 45%;">{{kanji.character}}</div><div style="display: inline-block; width: 45%; font-size: 12px;">{{kanji.translation}}</div>
+      </ion-item>
+    </ion-list>
+  </div>
+  </ion-content>
+</ion-view>

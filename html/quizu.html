@@ -1,0 +1,18 @@
+<ion-view title="Dr. Topper Quiz (U)">
+  <ion-content class="has-header english">
+  <div style="padding: 15px; text-align: center;">
+  <input type="checkbox" ng-model="quiz.hidequestions" id="cb9"/><label for="cb9" style="margin-left: 15px;">Hide questions</label>
+  
+  </div>
+  
+  <div>
+  
+  <div class="quiz-question" ng-hide="quiz.hidequestions" ng-bind-html="quiz.selectedQuestion.question"></div>
+  
+  <div class="answer english" ng-repeat="answer in quiz.selectedQuestion.answers" ng-click="isCorrect(answer)">
+  	<div ng-bind="answer"></div>
+  </div>
+  
+  </div>
+  </ion-content>
+</ion-view>

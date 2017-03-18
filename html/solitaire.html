@@ -1,0 +1,19 @@
+<ion-view title="Ball Solitaire">
+  <ion-content class="has-header" has-bouncing="false" scroll="false">
+  <div style="padding: 15px; text-align: center;">
+  <div>Drag a ball to an empty spot to simulate kicking it</div>
+  <div ng-show="hintsAvailable" style="margin-top: 20px;"><input type="checkbox" ng-click="hint()" ng-model="solitaire.hints" id="cb3"/><label for="cb3" style="margin-left: 15px;">Show hints</label></div>
+  <div ng-show="!hintsAvailable" style="margin-top: 20px;">No hints available</div>
+  
+  </div>
+  <div style="width: 100%; background:rgba(255, 255, 255, 0.25); padding: 1% 0 5%;">
+  
+  <div id="ballContainer" style="width: 90%; margin: 5%; height: 100px; position: relative;">
+  	<div ng-repeat="b in balls" ng-attr-id="ball_{{ $index }}" class="{{b.hintStyle}}" style="position:absolute; left:{{b.x}}px; top:{{b.y}}px; width: 42px; height: 44px;" on-drag="onDrag($event)" on-release="onRelease($event)">
+		<img ng-show="b.ball" src="img/ball.png"/>
+	</div>
+  </div>
+  </div>
+      <div style="text-align: center; margin-top: 25px;"><button class="button" ng-click="reset()">Reset</button></div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<ion-view title="Marathon">
+  <ion-content class="has-header">
+  <div style="padding: 15px; text-align: center;">
+  <div><input type="checkbox" ng-model="marathon.hints" id="cb2"/><label for="cb2" style="margin-left: 15px;">Show English</label></div>
+  <div style="margin-top: 20px;">Click on a runner to hear their message</div>
+  </div>
+  
+  <div class="display-table" style="text-align: center;">
+  	<div class="display-row">
+  		<div class="display-cell" style="width: 25%;"><img src="img/Boo.png" ng-click="getMessage('Boo')"/></div>	
+  		<div class="display-cell" style="width: 25%;"><img src="img/Goo.png" ng-click="getMessage('Goo')"/></div>	
+  		<div class="display-cell" style="width: 25%;"><img src="img/Bones.png" ng-click="getMessage('Bones')"/></div>	
+  		<div class="display-cell" style="width: 25%;"><img src="img/Kipp.png" ng-click="getMessage('Kipp')"/></div>	
+  	</div>
+  </div>
+  
+  <div style="padding: 15px; text-align: center;">
+  <div>Now put them in the right order (1st = top)</div>
+  </div>
+  <div>
+      <ion-list show-reorder="true">
+	      <ion-item ng-repeat="animal in animalOrder" class="smrpg-list-item">
+	        <div class="display-table">
+		        <div class="display-row">
+		        	<div class="display-cell" style="width: 25%; text-align: center; padding: 0;">
+		        		<div><img ng-src="img/{{animal.name_eng}}.png"/></div>
+			        </div>
+		        </div>
+        	</div>
+	        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(animal, $fromIndex, $toIndex)"></ion-reorder-button>
+	      </ion-item>
+      </ion-list>
+      <div style="text-align: center; margin-top: 25px;"><button class="button" ng-click="validateAnimals()">Submit</button></div>
+      
+  
+  </div>
+  </ion-content>
+</ion-view>

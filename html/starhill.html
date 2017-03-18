@@ -1,0 +1,14 @@
+<ion-view title="Star Hill">
+  <ion-content class="has-header" has-bouncing="false" scroll="false">
+  <div style="padding: 15px; text-align: center;">
+  	<div>Touch the flowers in the right order.</div>
+  	<div style="margin-top: 15px;"><select ng-model="star.room" ng-change="loadRoom()" style="width: 100%; height: 3rem;" ng-options="room.name for room in star.rooms"></select></div>
+  </div>
+  
+  <div id="mapContainer" style="position: relative;">
+  	<img ng-src="img/starhill_{{star.room.room}}.png" style="width: 100%;"/>
+  	<div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" compile="internalContents"></div>
+  </div>
+  <div style="margin-top: 30px; text-align: center;"><button class="button button-positive" ng-click="loadRoom()">Reset</button></div>
+  </ion-content>
+</ion-view>

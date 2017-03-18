@@ -1,0 +1,47 @@
+<ion-view title="21 Coin Game">
+  <ion-content class="has-header">
+  <div style="padding: 15px; text-align: center;">
+  <div>Whoever takes the 21st coin loses.</div>
+	<div style="margin-top: 20px;"><input type="checkbox" ng-click="hint()" ng-model="coin.hints" id="cb4"/><label for="cb4" style="margin-left: 15px;">Show hints</label></div>
+  </div>
+  <div style="width: 100%; height: 300px; background:rgba(255, 255, 255, 0.25);">
+  
+  <div id="animationContainer" style="width: 90%; margin: 5%; height: 250px; position: relative;">
+  	<div id="mario" class="mario" ng-class="{marioSlideRight: marioSlideRight, marioSlideLeft: marioSlideLeft, marioJump: marioJump, marioFall: marioFall}">
+  		<div style="position: relative; height: 100%;">
+  			<div style="position: absolute; bottom: 0; left: 0;">
+  				<img src="img/platform.png"/>
+  			</div>
+  			<div class="marioSprite1" ng-show="!(marioJump || marioFall)" style="position: absolute; bottom: 26px; left: 15px;">
+  				<img src="img/mario.png"/>
+  			</div>
+  			<div class="marioSprite2" ng-show="(marioJump || marioFall)" style="position: absolute; bottom: 26px; left: 7px;">
+  				<img src="img/marioJump.png"/>
+  			</div>
+  		</div>
+  	</div>
+  	<div id="topper" class="topper" ng-class="{topperSlideRight: topperSlideRight, topperSlideLeft: topperSlideLeft, topperJump: topperJump, topperFall: topperFall}">
+  		<div style="position: relative; height: 100%;">
+  			<div class="topperSprite" style="position: absolute; bottom: 0; left: 0;">
+  				<img src="img/topper.png"/>
+  			</div>
+  		</div>
+  	</div>
+  	<div style="position: absolute; height: 100px; width: 100%; top: 5px;" id="treasurebox">
+  		<div style="position: relative; width: 100%; text-align: center;">
+  			<div ng-show="!boxOpen" style="margin: 50px auto 0;">
+  				<img src="img/box.png"/>
+  			</div>
+  			<div ng-show="boxOpen" style="margin: 0px auto;">
+  				<img src="img/boxOpen.png"/>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  </div>
+  <div style="text-align: center; margin-top: 25px;"><button class="button" ng-click="jump()" ng-disabled="!canJump">Jump</button><button ng-disabled="!canRetreat" class="button" style="margin-left: 30px;" ng-click="retreat()">Retreat</button></div>
+      <div style="text-align: center; margin-top: 25px;"><button class="button" ng-click="reset()">Reset</button></div>
+  <div ng-show="coin.hints" style="text-align: center; margin-top: 20px; width: 100%;" ng-bind-html="coinsTakenMsg"></div>
+  <div ng-show="coin.hints" style="text-align: center; margin-top: 20px;" ng-bind-html="thisHint"></div>
+  </ion-content>
+</ion-view>

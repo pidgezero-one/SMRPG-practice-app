@@ -1,0 +1,32 @@
+<ion-view title="Dr. Topper Quiz (J)">
+  <ion-content class="has-header">
+  <div style="padding: 15px; text-align: center;">
+  <input type="checkbox" ng-model="quiz.hints" id="cb1"/><label for="cb1" style="margin-left: 15px;">Show hints</label><br><br>
+  <input type="checkbox" ng-model="quiz.hidequestions" id="cb1_5"/><label for="cb1_5" style="margin-left: 15px;">Hide questions</label>
+  
+  </div>
+  
+  <div>
+  
+  <div class="quiz-image" ng-hide="quiz.hidequestions">
+  	<img ng-src="img/topperq/{{quiz.selectedQuestion.qimage}}" />
+  </div>
+  <div class="quiz-question" ng-hide="quiz.hidequestions" ng-bind-html="quiz.selectedQuestion.question.japanese">
+  </div>
+  <div class="quiz-question-translations" ng-show="quiz.hints && !quiz.hidequestions">
+	  <div ng-bind-html="quiz.selectedQuestion.question.romaji" class="romaji"></div>
+	  <div ng-bind-html="quiz.selectedQuestion.question.english" class="english"></div>
+  </div>
+  <div class="quiz-image">
+  	<img ng-src="img/topperq/{{quiz.selectedQuestion.aimage}}" />
+  </div>
+  
+  <div class="answer" ng-repeat="answer in quiz.selectedQuestion.answers" ng-click="isCorrect(answer.japanese)">
+  	<div class="japanese" ng-bind="answer.japanese"></div>
+	  <div ng-bind-html="answer.romaji" class="romaji answer-translation" ng-show="quiz.hints"></div>
+	  <div ng-bind-html="answer.english" class="english answer-translation" ng-show="quiz.hints"></div>
+  </div>
+  
+  </div>
+  </ion-content>
+</ion-view>
