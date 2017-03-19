@@ -10057,6 +10057,9 @@ a {
   vertical-align: middle;
   line-height: 36px; }
 
+span.item-icon-description {
+  padding-right: 10px; }
+
 .menu-simulator {
   background: #000;
   font-family: sans !important;
