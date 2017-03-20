@@ -7,7 +7,7 @@
   <div>
   
   <div class="quiz-question">
-  <span class="item-icon-description">What is</span><img class="item-icon-description" ng-src="img/icons/{{ quiz.selectedQuestion.type }}.png"/><img class="item-icon-description" ng-repeat="letter in quiz.selectedQuestion.question track by $index" ng-src="img/font/japanese/{{letter}}.png"/>
+  <span class="item-icon-description">What is</span><img class="item-icon-description" src="img/icons/{{ quiz.selectedQuestion.type }}.png"/><img class="item-icon-description" ng-repeat="letter in quiz.selectedQuestion.question track by $index" ng-src="img/font/japanese/{{getLetterFile(letter)}}.png"/>
   <span class="item-icon-description">?</span>
   </div>
   <div class="quiz-question-translations" ng-show="quiz.hints">

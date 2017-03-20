@@ -1711,6 +1711,212 @@ angular.module('smrpg.controllers', [])
 
 .controller('JNamesCtrl', function($scope, $ionicPopup) {
 	$scope.quiz = {};
+	$scope.getLetterFile = function(letter) {
+		var fname = "";
+		switch(letter) {
+			
+			case "ァ": fname = "k_a_small"; break;
+			case "ィ": fname = "k_i_small"; break;
+			case "ェ": fname = "k_e_small"; break;
+			case "ォ": fname = "k_o_small"; break;
+			case "ゥ": fname = "k_u_small"; break;
+			case "ャ": fname = "k_ya_small"; break;
+			case "ュ": fname = "k_yu_small"; break;
+			case "ョ": fname = "k_yo_small"; break;
+			case "ッ": fname = "k_tsu_small"; break;
+			
+			case "ア": fname = "k_a"; break;
+			case "イ": fname = "k_i"; break;
+			case "ウ": fname = "k_u"; break;
+			case "エ": fname = "k_e"; break;
+			case "オ": fname = "k_o"; break;
+
+			case "カ": fname = "k_ka"; break;
+			case "キ": fname = "k_ki"; break;
+			case "ク": fname = "k_ku"; break;
+			case "ケ": fname = "k_ke"; break;
+			case "コ": fname = "k_ko"; break;
+
+			case "サ": fname = "k_sa"; break;
+			case "シ": fname = "k_shi"; break;
+			case "ス": fname = "k_su"; break;
+			case "セ": fname = "k_se"; break;
+			case "ソ": fname = "k_so"; break;
+
+			case "タ": fname = "k_ta"; break;
+			case "チ": fname = "k_chi"; break;
+			case "ツ": fname = "k_tsu"; break;
+			case "テ": fname = "k_te"; break;
+			case "ト": fname = "k_to"; break;
+
+			case "ナ": fname = "k_na"; break;
+			case "ニ": fname = "k_ni"; break;
+			case "ヌ": fname = "k_nu"; break;
+			case "ネ": fname = "k_ne"; break;
+			case "ノ": fname = "k_no"; break;
+
+			case "ハ": fname = "k_ha"; break;
+			case "ヒ": fname = "k_hi"; break;
+			case "フ": fname = "k_fu"; break;
+			case "ヘ": fname = "k_he"; break;
+			case "ホ": fname = "k_ho"; break;
+
+			case "マ": fname = "k_ma"; break;
+			case "ミ": fname = "k_mi"; break;
+			case "ム": fname = "k_mu"; break;
+			case "メ": fname = "k_me"; break;
+			case "モ": fname = "k_mo"; break;
+
+			case "ヤ": fname = "k_ya"; break;
+			case "ユ": fname = "k_yu"; break;
+			case "ヨ": fname = "k_yo"; break;
+
+			case "ラ": fname = "k_ra"; break;
+			case "リ": fname = "k_ri"; break;
+			case "ル": fname = "k_ru"; break;
+			case "レ": fname = "k_re"; break;
+			case "ロ": fname = "k_ro"; break;
+
+			case "ワ": fname = "k_wa"; break;
+			case "ヲ": fname = "k_wo"; break;
+
+			case "ン": fname = "k_n"; break;
+
+			case "ガ": fname = "k_ga"; break;
+			
+			case "ギ": fname = "k_gi"; break;
+			case "グ": fname = "k_gu"; break;
+			case "ゲ": fname = "k_ge"; break;
+			case "ゴ": fname = "k_go"; break;
+
+			case "ザ": fname = "k_za"; break;
+			case "ジ": fname = "k_ji"; break;
+			case "ズ": fname = "k_zu"; break;
+			case "ゼ": fname = "k_ze"; break;
+			case "ゾ": fname = "k_zo"; break;
+
+			case "ダ": fname = "k_da"; break;
+			case "ヂ": fname = "k_ji"; break;
+			case "ヅ": fname = "k_zu"; break;
+			case "デ": fname = "k_de"; break;
+			case "ド": fname = "k_do"; break;
+
+			case "バ": fname = "k_ba"; break;
+			case "ビ": fname = "k_bi"; break;
+			case "ブ": fname = "k_bu"; break;
+			case "ベ": fname = "k_be"; break;
+			case "ボ": fname = "k_bo"; break;
+
+			case "パ": fname = "k_pa"; break;
+			case "ピ": fname = "k_pi"; break;
+			case "プ": fname = "k_pu"; break;
+			case "ペ": fname = "k_pe"; break;
+			case "ポ": fname = "k_po"; break;
+			
+			case "ー": fname = "-"; break;
+
+			case "ぁ": fname = "h_a_small"; break;
+			case "ぃ": fname = "h_i_small"; break;
+			case "ぇ": fname = "h_e_small"; break;
+			case "ぉ": fname = "h_o_small"; break;
+			case "ぅ": fname = "h_u_small"; break;
+			case "ゃ": fname = "h_ya_small"; break;
+			case "ゅ": fname = "h_yu_small"; break;
+			case "ょ": fname = "h_yo_small"; break;
+			case "っ": fname = "h_tsu_small"; break;
+			
+			case "あ": fname = "h_a"; break;
+			case "い": fname = "h_i"; break;
+			case "う": fname = "h_u"; break;
+			case "え": fname = "h_e"; break;
+			case "お": fname = "h_o"; break;
+
+			case "か": fname = "h_ka"; break;
+			case "き": fname = "h_ki"; break;
+			case "く": fname = "h_ku"; break;
+			case "け": fname = "h_ke"; break;
+			case "こ": fname = "h_ko"; break;
+
+			case "さ": fname = "h_sa"; break;
+			case "し": fname = "h_shi"; break;
+			case "す": fname = "h_su"; break;
+			case "せ": fname = "h_se"; break;
+			case "そ": fname = "h_so"; break;
+
+			case "た": fname = "h_ta"; break;
+			case "ち": fname = "h_chi"; break;
+			case "つ": fname = "h_tsu"; break;
+			case "て": fname = "h_te"; break;
+			case "と": fname = "h_to"; break;
+
+			case "な": fname = "h_na"; break;
+			case "に": fname = "h_ni"; break;
+			case "ぬ": fname = "h_nu"; break;
+			case "ね": fname = "h_ne"; break;
+			case "の": fname = "h_no"; break;
+
+			case "は": fname = "h_ha"; break;
+			case "ひ": fname = "h_hi"; break;
+			case "ふ": fname = "h_fu"; break;
+			case "へ": fname = "h_he"; break;
+			case "ほ": fname = "h_ho"; break;
+
+			case "ま": fname = "h_ma"; break;
+			case "み": fname = "h_mi"; break;
+			case "む": fname = "h_mu"; break;
+			case "め": fname = "h_me"; break;
+			case "も": fname = "h_mo"; break;
+
+			case "や": fname = "h_ya"; break;
+			case "ゆ": fname = "h_yu"; break;
+			case "よ": fname = "h_yo"; break;
+
+			case "ら": fname = "h_ra"; break;
+			case "り": fname = "h_ri"; break;
+			case "る": fname = "h_ru"; break;
+			case "れ": fname = "h_re"; break;
+			case "ろ": fname = "h_ro"; break;
+
+			case "わ": fname = "h_wa"; break;
+			case "を": fname = "h_wo"; break;
+
+			case "ん": fname = "h_n"; break;
+
+			case "が": fname = "h_ga"; break;
+			
+			case "ぎ": fname = "h_gi"; break;
+			case "ぐ": fname = "h_gu"; break;
+			case "げ": fname = "h_ge"; break;
+			case "ご": fname = "h_go"; break;
+
+			case "ざ": fname = "h_za"; break;
+			case "じ": fname = "h_ji"; break;
+			case "ず": fname = "h_zu"; break;
+			case "ぜ": fname = "h_ze"; break;
+			case "ぞ": fname = "h_zo"; break;
+
+			case "だ": fname = "h_da"; break;
+			case "ぢ": fname = "h_ji"; break;
+			case "づ": fname = "h_zu"; break;
+			case "で": fname = "h_de"; break;
+			case "ど": fname = "h_do"; break;
+
+			case "ば": fname = "h_ba"; break;
+			case "び": fname = "h_bi"; break;
+			case "ぶ": fname = "h_bu"; break;
+			case "べ": fname = "h_be"; break;
+			case "ぼ": fname = "h_bo"; break;
+
+			case "ぱ": fname = "h_pa"; break;
+			case "ぴ": fname = "h_pi"; break;
+			case "ぷ": fname = "h_pu"; break;
+			case "ぺ": fname = "h_pe"; break;
+			case "ぽ": fname = "h_po"; break;
+
+		}
+		
+		return fname;
+	}
 	var questions = [{	"question": "リフレッシュジュース",
 						"type": "drink",
 						"hint": "Rifuresshu Jūsu",
