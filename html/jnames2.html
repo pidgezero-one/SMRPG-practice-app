@@ -1,0 +1,22 @@
+<ion-view title="Item Name Practice">
+  <ion-content class="has-header">
+  <div style="padding: 15px; text-align: center;">
+  <input type="checkbox" ng-model="quiz.hints" id="cb113"/><label for="cb113" style="margin-left: 15px;">Show Japanese pronounciation</label><br><br>
+  </div>
+  
+  <div>
+  
+  <div class="quiz-question">
+  <span class="item-icon-description">What is {{quiz.selectedQuestion.question}}?</span>
+  </div>
+  <div class="quiz-question-translations" ng-show="quiz.hints">
+	  <div ng-bind-html="quiz.selectedQuestion.hint" class="romaji"></div>
+  </div>
+  
+  <div class="answer" ng-repeat="answer in quiz.selectedQuestion.answers" ng-click="isCorrect(answer)">
+  	<div style="padding: 10px;"><img class="item-icon-description" src="img/icons/{{ quiz.selectedQuestion.type }}.png"/><img class="item-icon-description" ng-repeat="letter in answer track by $index" ng-src="img/font/japanese/{{getLetterFile(letter)}}.png"/></div>
+  </div>
+  
+  </div>
+  </ion-content>
+</ion-view>

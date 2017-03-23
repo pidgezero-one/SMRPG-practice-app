@@ -24,7 +24,8 @@ angular.module('smrpg.controllers', [])
 	      { title: 'Dr. Topper Quiz (J)', id: 1 },
 	      { title: 'Dr. Topper Quiz (U)', id: 9 },
 	      { title: 'Marathon', id: 2 },
-	      { title: 'Item Name Practice', id: 13 },
+	      { title: 'J-to-E Item Names', id: 13 },
+	      { title: 'E-to-J Item Names', id: 15 },
 	      { title: 'Ball Solitaire', id: 3 },
 	      { title: 'Star Hill Flowers', id: 10 },
 	      { title: '21 Coin Game', id: 4 },
@@ -2173,6 +2174,437 @@ angular.module('smrpg.controllers', [])
 	setQuestion();
 })
 
+
+.controller('JNames2Ctrl', function($scope, $ionicPopup) {
+	$scope.quiz = {};
+	$scope.getLetterFile = function(letter) {
+		var fname = "";
+		switch(letter) {
+			
+			case "ァ": fname = "k_a_small"; break;
+			case "ィ": fname = "k_i_small"; break;
+			case "ェ": fname = "k_e_small"; break;
+			case "ォ": fname = "k_o_small"; break;
+			case "ゥ": fname = "k_u_small"; break;
+			case "ャ": fname = "k_ya_small"; break;
+			case "ュ": fname = "k_yu_small"; break;
+			case "ョ": fname = "k_yo_small"; break;
+			case "ッ": fname = "k_tsu_small"; break;
+			
+			case "ア": fname = "k_a"; break;
+			case "イ": fname = "k_i"; break;
+			case "ウ": fname = "k_u"; break;
+			case "エ": fname = "k_e"; break;
+			case "オ": fname = "k_o"; break;
+
+			case "カ": fname = "k_ka"; break;
+			case "キ": fname = "k_ki"; break;
+			case "ク": fname = "k_ku"; break;
+			case "ケ": fname = "k_ke"; break;
+			case "コ": fname = "k_ko"; break;
+
+			case "サ": fname = "k_sa"; break;
+			case "シ": fname = "k_shi"; break;
+			case "ス": fname = "k_su"; break;
+			case "セ": fname = "k_se"; break;
+			case "ソ": fname = "k_so"; break;
+
+			case "タ": fname = "k_ta"; break;
+			case "チ": fname = "k_chi"; break;
+			case "ツ": fname = "k_tsu"; break;
+			case "テ": fname = "k_te"; break;
+			case "ト": fname = "k_to"; break;
+
+			case "ナ": fname = "k_na"; break;
+			case "ニ": fname = "k_ni"; break;
+			case "ヌ": fname = "k_nu"; break;
+			case "ネ": fname = "k_ne"; break;
+			case "ノ": fname = "k_no"; break;
+
+			case "ハ": fname = "k_ha"; break;
+			case "ヒ": fname = "k_hi"; break;
+			case "フ": fname = "k_fu"; break;
+			case "ヘ": fname = "k_he"; break;
+			case "ホ": fname = "k_ho"; break;
+
+			case "マ": fname = "k_ma"; break;
+			case "ミ": fname = "k_mi"; break;
+			case "ム": fname = "k_mu"; break;
+			case "メ": fname = "k_me"; break;
+			case "モ": fname = "k_mo"; break;
+
+			case "ヤ": fname = "k_ya"; break;
+			case "ユ": fname = "k_yu"; break;
+			case "ヨ": fname = "k_yo"; break;
+
+			case "ラ": fname = "k_ra"; break;
+			case "リ": fname = "k_ri"; break;
+			case "ル": fname = "k_ru"; break;
+			case "レ": fname = "k_re"; break;
+			case "ロ": fname = "k_ro"; break;
+
+			case "ワ": fname = "k_wa"; break;
+			case "ヲ": fname = "k_wo"; break;
+
+			case "ン": fname = "k_n"; break;
+
+			case "ガ": fname = "k_ga"; break;
+			
+			case "ギ": fname = "k_gi"; break;
+			case "グ": fname = "k_gu"; break;
+			case "ゲ": fname = "k_ge"; break;
+			case "ゴ": fname = "k_go"; break;
+
+			case "ザ": fname = "k_za"; break;
+			case "ジ": fname = "k_ji"; break;
+			case "ズ": fname = "k_zu"; break;
+			case "ゼ": fname = "k_ze"; break;
+			case "ゾ": fname = "k_zo"; break;
+
+			case "ダ": fname = "k_da"; break;
+			case "ヂ": fname = "k_ji"; break;
+			case "ヅ": fname = "k_zu"; break;
+			case "デ": fname = "k_de"; break;
+			case "ド": fname = "k_do"; break;
+
+			case "バ": fname = "k_ba"; break;
+			case "ビ": fname = "k_bi"; break;
+			case "ブ": fname = "k_bu"; break;
+			case "ベ": fname = "k_be"; break;
+			case "ボ": fname = "k_bo"; break;
+
+			case "パ": fname = "k_pa"; break;
+			case "ピ": fname = "k_pi"; break;
+			case "プ": fname = "k_pu"; break;
+			case "ペ": fname = "k_pe"; break;
+			case "ポ": fname = "k_po"; break;
+			
+			case "ー": fname = "-"; break;
+
+			case "ぁ": fname = "h_a_small"; break;
+			case "ぃ": fname = "h_i_small"; break;
+			case "ぇ": fname = "h_e_small"; break;
+			case "ぉ": fname = "h_o_small"; break;
+			case "ぅ": fname = "h_u_small"; break;
+			case "ゃ": fname = "h_ya_small"; break;
+			case "ゅ": fname = "h_yu_small"; break;
+			case "ょ": fname = "h_yo_small"; break;
+			case "っ": fname = "h_tsu_small"; break;
+			
+			case "あ": fname = "h_a"; break;
+			case "い": fname = "h_i"; break;
+			case "う": fname = "h_u"; break;
+			case "え": fname = "h_e"; break;
+			case "お": fname = "h_o"; break;
+
+			case "か": fname = "h_ka"; break;
+			case "き": fname = "h_ki"; break;
+			case "く": fname = "h_ku"; break;
+			case "け": fname = "h_ke"; break;
+			case "こ": fname = "h_ko"; break;
+
+			case "さ": fname = "h_sa"; break;
+			case "し": fname = "h_shi"; break;
+			case "す": fname = "h_su"; break;
+			case "せ": fname = "h_se"; break;
+			case "そ": fname = "h_so"; break;
+
+			case "た": fname = "h_ta"; break;
+			case "ち": fname = "h_chi"; break;
+			case "つ": fname = "h_tsu"; break;
+			case "て": fname = "h_te"; break;
+			case "と": fname = "h_to"; break;
+
+			case "な": fname = "h_na"; break;
+			case "に": fname = "h_ni"; break;
+			case "ぬ": fname = "h_nu"; break;
+			case "ね": fname = "h_ne"; break;
+			case "の": fname = "h_no"; break;
+
+			case "は": fname = "h_ha"; break;
+			case "ひ": fname = "h_hi"; break;
+			case "ふ": fname = "h_fu"; break;
+			case "へ": fname = "h_he"; break;
+			case "ほ": fname = "h_ho"; break;
+
+			case "ま": fname = "h_ma"; break;
+			case "み": fname = "h_mi"; break;
+			case "む": fname = "h_mu"; break;
+			case "め": fname = "h_me"; break;
+			case "も": fname = "h_mo"; break;
+
+			case "や": fname = "h_ya"; break;
+			case "ゆ": fname = "h_yu"; break;
+			case "よ": fname = "h_yo"; break;
+
+			case "ら": fname = "h_ra"; break;
+			case "り": fname = "h_ri"; break;
+			case "る": fname = "h_ru"; break;
+			case "れ": fname = "h_re"; break;
+			case "ろ": fname = "h_ro"; break;
+
+			case "わ": fname = "h_wa"; break;
+			case "を": fname = "h_wo"; break;
+
+			case "ん": fname = "h_n"; break;
+
+			case "が": fname = "h_ga"; break;
+			
+			case "ぎ": fname = "h_gi"; break;
+			case "ぐ": fname = "h_gu"; break;
+			case "げ": fname = "h_ge"; break;
+			case "ご": fname = "h_go"; break;
+
+			case "ざ": fname = "h_za"; break;
+			case "じ": fname = "h_ji"; break;
+			case "ず": fname = "h_zu"; break;
+			case "ぜ": fname = "h_ze"; break;
+			case "ぞ": fname = "h_zo"; break;
+
+			case "だ": fname = "h_da"; break;
+			case "ぢ": fname = "h_ji"; break;
+			case "づ": fname = "h_zu"; break;
+			case "で": fname = "h_de"; break;
+			case "ど": fname = "h_do"; break;
+
+			case "ば": fname = "h_ba"; break;
+			case "び": fname = "h_bi"; break;
+			case "ぶ": fname = "h_bu"; break;
+			case "べ": fname = "h_be"; break;
+			case "ぼ": fname = "h_bo"; break;
+
+			case "ぱ": fname = "h_pa"; break;
+			case "ぴ": fname = "h_pi"; break;
+			case "ぷ": fname = "h_pu"; break;
+			case "ぺ": fname = "h_pe"; break;
+			case "ぽ": fname = "h_po"; break;
+
+		}
+		
+		return fname;
+	}
+	var questions = [{	"question": "Able Juice",
+						"type": "drink",
+						"hint": "Rifuresshu Jūsu",
+						"answers":["リフレッシュジュース", "ふっかつドリンク", "ニーシロップ", "キノコ", "レッドヨッシーエキス"],
+						"correct": 1 },
+					{	"question": "Bad Mushroom",
+						"type": "drink",
+						"hint": "Doku Kinoko",
+						"answers":["リフレッシュジュース", "どくキノコ", "キノコ", "スーパーキノコ", "メイプルシロップ"],
+						"correct": 2 },
+					{	"question": "Energizer",
+						"type": "drink",
+						"hint": "Tsuyoku Nāru",
+						"answers":["ツヨクナール", "オタマドリンク", "ハニーシロップ", "カタクナール", "ミンナツヨクナール"],
+						"correct": 1 },
+					{	"question": "Fire Bomb",
+						"type": "bomb",
+						"hint": "Kaendama",
+						"answers":["かえんだま", "びびりだま", "こおりだま", "こんぺいとう", "ねむりだま"],
+						"correct": 1 },
+					{	"question": "Flower Box",
+						"type": "none",
+						"hint": "Furawā Gifuto",
+						"answers":["フラワーギフト", "フラワーセット", "フラワーカプセル", "ブリリアントカード", "サイフ"],
+						"correct": 1 },
+					{	"question": "Flower Jar",
+						"type": "none",
+						"hint": "Furawā Setto",
+						"answers":["フラワーギフト", "フラワーセット", "フラワーカプセル", "ブリリアントカード", "サイフ"],
+						"correct": 2 },
+					{	"question": "Flower Tab",
+						"type": "none",
+						"hint": "Furawā Kapuseru",
+						"answers":["フラワーギフト", "フラワーセット", "フラワーカプセル", "ブリリアントカード", "サイフ"],
+						"correct": 3 },
+					{	"question": "Fright Bomb",
+						"type": "bomb",
+						"hint": "Bibiridama",
+						"answers":["かえんだま", "びびりだま", "こおりだま", "こんぺいとう", "ねむりだま"],
+						"correct": 2 },
+					{	"question": "FroggieDrink",
+						"type": "drink",
+						"hint": "Otama Dorinku",
+						"answers":["ツヨクナール", "オタマドリンク", "ハニーシロップ", "ケロケロドリンク", "リフレッシュジュース"],
+						"correct": 2 },
+					{	"question": "Honey Syrup",
+						"type": "drink",
+						"hint": "Hanī Shiroppu",
+						"answers":["リフレッシュジュース", "ツヨクナール", "ハニーシロップ", "キノコ", "ふっかつドリンク"],
+						"correct": 3 },
+					{	"question": "Ice Bomb",
+						"type": "bomb",
+						"hint": "Kōridama",
+						"answers":["かえんだま", "びびりだま", "こおりだま", "こんぺいとう", "ねむりだま"],
+						"correct": 3 },
+					{	"question": "KerokeroCola",
+						"type": "drink",
+						"hint": "Kerokero Dorinku",
+						"answers":["オタマドリンク", "ケロケロドリンク", "リフレッシュジュース", "ツヨクナール", "レッドヨッシーエキス"],
+						"correct": 2 },
+					{	"question": "Maple Syrup",
+						"type": "drink",
+						"hint": "Meipuru Shiroppu",
+						"answers":["リフレッシュジュース", "ケロケロドリンク", "メイプルシロップ", "スーパーキノコ", "ロイヤルシロップ"],
+						"correct": 3 },
+					{	"question": "Mid Mushroom",
+						"type": "drink",
+						"hint": "Sūpā Kinoko",
+						"answers":["リフレッシュジュース", "ケロケロドリンク", "メイプルシロップ", "スーパーキノコ", "ロイヤルシロップ"],
+						"correct": 4 },
+					{	"question": "Mushroom",
+						"type": "drink",
+						"hint": "Kinoko",
+						"answers":["リフレッシュジュース", "ふっかつドリンク", "ハニーシロップ", "キノコ", "レッドヨッシーエキス"],
+						"correct": 4 },
+					{	"question": "Pick Me Up",
+						"type": "drink",
+						"hint": "Fukkatsu Dorinku",
+						"answers":["リフレッシュジュース", "ハニーシロップ", "オタマドリンク", "ケロケロドリンク", "ふっかつドリンク"],
+						"correct": 5 },
+					{	"question": "Red Essence",
+						"type": "drink",
+						"hint": "Reddo Yosshī Ekisu",
+						"answers":["リフレッシュジュース", "オタマドリンク", "ケロケロドリンク", "ふっかつドリンク", "レッドヨッシーエキス"],
+						"correct": 5 },
+					{	"question": "Rock Candy",
+						"type": "bomb",
+						"hint": "Konpeitō",
+						"answers":["かえんだま", "びびりだま", "こおりだま", "こんぺいとう", "ねむりだま"],
+						"correct": 4 },
+					{	"question": "Royal Syrup",
+						"type": "drink",
+						"hint": "Roiyaru Shiroppu",
+						"answers":["ケロケロドリンク", "メイプルシロップ", "ふっかつドリンク", "ロイヤルシロップ", "スーパーキノコ"],
+						"correct": 4 },
+					{	"question": "Sleepy Bomb",
+						"type": "bomb",
+						"hint": "Nemuridama",
+						"answers":["かえんだま", "びびりだま", "こおりだま", "こんぺいとう", "ねむりだま"],
+						"correct": 5 },
+					{	"question": "Wallet",
+						"type": "none",
+						"hint": "Saifu",
+						"answers":["フラワーギフト", "フラワーセット", "フラワーカプセル", "ブリリアントカード", "サイフ"],
+						"correct": 5 },
+					{	"question": "Amulet",
+						"type": "accessory",
+						"hint": "Bukkī no Omamori",
+						"answers":["ブッキーのおまもり", "かいてんシューズ", "あなたをこえたくて", "セーフティーリング", "ぼんやりふせぎバッジ"],
+						"correct": 1 },
+					{	"question": "Attack Scarf",
+						"type": "accessory",
+						"hint": "Janpā Sukāfu",
+						"answers":["ブッキーのおまもり", "ジャンパースカーフ", "あなたをこえたくて", "かいてんシューズ", "シュビビンシューズ"],
+						"correct": 2 },
+					{	"question": "Double Punch",
+						"type": "glove",
+						"hint": "Sūpā Daburu Panchi",
+						"answers":["ちょービンタグローブ", "スーパーダブルパンチ", "ぶんなげグローブ", "でかパンチグローブ", "パンチグローブ"],
+						"correct": 2 },
+					{	"question": "Exp. Booster",
+						"type": "accessory",
+						"hint": "Anata o Koetakute",
+						"answers":["ブッキーのおまもり", "あなたをこえたくて", "ドドのはね", "セーフティーリング", "パタパタくんしょう"],
+						"correct": 2 },
+					{	"question": "Feather",
+						"type": "accessory",
+						"hint": "Dodo no Hane",
+						"answers":["ジャンパースカーフ", "あなたをこえたくて", "ドドのはね", "セーフティーリング", "パタパタくんしょう"],
+						"correct": 3 },
+					{	"question": "Hurly Gloves",
+						"type": "glove",
+						"hint": "Bunnage Gurōbu",
+						"answers":["スーパーダブルパンチ", "ぶんなげグローブ", "でかパンチグローブ", "パンチグローブ", "ちょービンタグローブ"],
+						"correct": 2 },
+					{	"question": "Jump Shoes",
+						"type": "accessory",
+						"hint": "Kaiten Shūzu",
+						"answers":["どくふせぎバッジ", "ブッキーのおまもり", "ジャンパースカーフ", "かいてんシューズ", "シュビビンシューズ"],
+						"correct": 4 },
+					{	"question": "Mega Glove",
+						"type": "glove",
+						"hint": "Deka Panchi Gurōbu",
+						"answers":["スーパーダブルパンチ", "ぶんなげグローブ", "でかパンチグローブ", "パンチグローブ", "ちょービンタグローブ"],
+						"correct": 3 },
+					{	"question": "Punch Glove",
+						"type": "glove",
+						"hint": "Panchi Gurōbu",
+						"answers":["スーパーダブルパンチ", "ぶんなげグローブ", "でかパンチグローブ", "パンチグローブ", "ちょービンタグローブ"],
+						"correct": 4 },
+					{	"question": "Safety Ring",
+						"type": "accessory",
+						"hint": "Sēfutī Ringu",
+						"answers":["ブッキーのおまもり", "あなたをこえたくて", "ドドのはね", "セーフティーリング", "パタパタくんしょう"],
+						"correct": 4 },
+					{	"question": "Shirt",
+						"type": "armor",
+						"hint": "Futsū no Tsunagi",
+						"answers":["ふつうのパンツ", "ラブラブドレス", "ふつうのつなぎ", "スーパージャンパー", "ばっちいパンツ"],
+						"correct": 3 },
+					{	"question": "Super Suit",
+						"type": "armor",
+						"hint": "Sūpā Janpā",
+						"answers":["ふつうのパンツ", "ラブラブドレス", "ふつうのつなぎ", "スーパージャンパー", "ばっちいパンツ"],
+						"correct":  4},
+					{	"question": "Troopa Pin",
+						"type": "accessory",
+						"hint": "Patapata Kunshō",
+						"answers":["ブッキーのおまもり", "あなたをこえたくて", "ドドのはね", "セーフティーリング", "パタパタくんしょう"],
+						"correct": 5 },
+					{	"question": "Wake Up Pin",
+						"type": "accessory",
+						"hint": "Bon'yari Fusegi Bajji",
+						"answers":["ブッキーのおまもり", "あなたをこえたくて", "かいてんシューズ", "ぼんやりふせぎバッジ", "へんしんふせぎバッジ"],
+						"correct": 4 },
+					{	"question": "Work Pants",
+						"type": "armor",
+						"hint": "Batchī Pantsu",
+						"answers":["ふつうのパンツ", "ラブラブドレス", "ふつうのつなぎ", "スーパージャンパー", "ばっちいパンツ"],
+						"correct": 5 },
+					{	"question": "Zoom Shoes",
+							"type": "accessory",
+							"hint": "Shubibin Shūzu",
+							"answers":["ブッキーのおまもり", "ジャンパースカーフ", "あなたをこえたくて", "かいてんシューズ", "シュビビンシューズ"],
+							"correct": 5 }];
+	var activeQuestionArray = [];
+	$scope.quiz.selectedQuestion = {};
+	$scope.questionsAttempted = questions.length - 1;
+
+	function setQuestion () {
+		$scope.questionsAttempted++;
+		if ($scope.questionsAttempted == questions.length) {
+			activeQuestionArray = shuffle(questions);
+			$scope.questionsAttempted = 0;
+		}
+		$scope.quiz.selectedQuestion = activeQuestionArray[$scope.questionsAttempted];
+	}
+	
+	$scope.isCorrect = function(answer) {
+		 
+		if (answer == $scope.quiz.selectedQuestion.answers[$scope.quiz.selectedQuestion.correct - 1]) {
+			 var alertPopup = $ionicPopup.alert({
+			     title: 'Correct!',
+			     template: $scope.quiz.selectedQuestion.question + " is <span class='right-answer'><b>" + answer + "</b></span>.",
+			     buttons: [{ text: "OK", type: 'button-positive', onTap: function(e) { setQuestion();}}]
+			   });
+		}
+		else {
+			 var alertPopup = $ionicPopup.alert({
+			     title: 'Incorrect',
+			     template: $scope.quiz.selectedQuestion.question + " is not " + answer + ".",
+				     buttons: [{ text: "Try Again", type: 'button-positive'},
+				               { text: "New Question", type: 'button-positive', onTap: function(e) { setQuestion();}}]
+			   });
+		}
+		alertPopup;
+	}
+	
+	setQuestion();
+})
+
+
 .controller('StarCtrl', function($scope, $window, $compile, $ionicPopup) {
 	angular.element(window).on('resize', windowResizeHandler);
 	  function windowResizeHandler( ) {
@@ -2318,10 +2750,10 @@ angular.module('smrpg.controllers', [])
 	                  {"japanese": "スターガン", "romaji": "Sutā Gan", "dt": "Star Gun", "english": "Star Gun", "type": "item", "relevant": false},
 	                  {"japanese": "くっつきグローブ", "romaji": "Kuttsuki Gurōbu", "dt": "Sticky Glove", "english": "Sticky Glove", "type": "item", "relevant": false},
 	                  {"japanese": "スーパーハンマー", "romaji": "Sūpā Hanmā", "dt": "Super Hammer", "english": "Super Hammer", "type": "item", "relevant": false},
-	                  {"japanese": "ちょービンタグローブ", "romaji": "Chō Binta Gurōbu", "dt": "Super Slap Glove", "english": "Super Slap", "type": "item", "relevant": true},
+	                  {"japanese": "ちょービンタグローブ", "romaji": "Chō Binta Gurōbu", "dt": "Super Slap Glove", "english": "Super Slap", "type": "item", "relevant": false},
 	                  {"japanese": "パタパタこうら", "romaji": "Patapata Kōra", "dt": "Patapata Shell", "english": "Troopa Shell", "type": "item", "relevant": true},
-	                  {"japanese": "ウルトラハンマー", "romaji": "Urutora Hanmā", "dt": "Ultra Hammer", "english": "Ultra Hammer", "type": "item", "relevant": true},
-	                  {"japanese": "センス", "romaji": "Sensu", "dt": "Folding Fan", "english": "War Fan", "type": "item", "relevant": false},
+	                  {"japanese": "ウルトラハンマー", "romaji": "Urutora Hanmā", "dt": "Ultra Hammer", "english": "Ultra Hammer", "type": "item", "relevant": false},
+	                  {"japanese": "センス", "romaji": "Sensu", "dt": "Folding Fan", "english": "War Fan", "type": "item", "relevant": true},
 	                  {"japanese": "のびパンチグローブ", "romaji": "Nobi Panchi Gurōbu", "dt": "Stretching Punch Glove", "english": "Whomp Glove", "type": "item", "relevant": false}];
 	
 	$scope.equipment = [{"japanese": "むてきのこうら", "romaji": "Muteki no Kōra", "dt": "Invincible Shell", "english": "Courage Shell", "type": "item", "relevant": false},

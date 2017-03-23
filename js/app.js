@@ -89,6 +89,16 @@ angular.module('smrpg', ['ionic', 'smrpg.controllers'])
       }
     })
 
+    .state('app.jnames2', {
+      url: "/tasks/15",
+      views: {
+        'menuContent' :{
+          templateUrl: "html/jnames2.html",
+          controller: 'JNames2Ctrl'
+        }
+      }
+    })
+
     .state('app.marathon', {
       url: "/tasks/2",
       views: {
